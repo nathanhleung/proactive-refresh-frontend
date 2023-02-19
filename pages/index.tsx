@@ -41,7 +41,7 @@ export default function Home() {
               secure than previous signature schemes.
             </Text>
           </Box>
-          <HStack gap={3} fontSize={20}>
+          <HStack gap={3} fontSize={20} justifyContent='center' py={8}>
             <Text>
               Read the paper{' '}
               <Link href='https://eprint.iacr.org/2022/1656.pdf'>here</Link>.
@@ -60,7 +60,7 @@ export default function Home() {
           </HStack>
         </Box>
         <Box
-          pt={15}
+          pt={40}
           borderRadius={10}
           backgroundColor='#237597'
           width={200}
