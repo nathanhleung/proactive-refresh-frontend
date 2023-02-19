@@ -9,6 +9,7 @@ function useSafeBalance(token?: string) {
   const address = useSafeAddress();
 
   return useBalance({
+    // @ts-ignore
     address,
     ...(token
       ? {
@@ -23,6 +24,7 @@ function useSafeRead(functionName: string, args?: unknown[]) {
   const address = useSafeAddress();
 
   return useContractRead({
+    // @ts-ignore
     address,
     abi: gnosisSafeJson.abi,
     functionName,

@@ -4,6 +4,8 @@ import { WagmiConfig } from 'wagmi';
 import { wagmiClient } from '@config/wagmi';
 import { ChakraProvider } from '@chakra-ui/react';
 import { extendTheme } from '@chakra-ui/react';
+import { ethers } from 'ethers';
+import { useEffect } from 'react';
 
 const theme = extendTheme({
   initialColorMode: 'dark',
@@ -42,6 +44,11 @@ const theme = extendTheme({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    // @ts-ignore
+    window.ethers = ethers;
+  }, []);
+
   return (
     <ChakraProvider theme={theme}>
       <WagmiConfig client={wagmiClient}>

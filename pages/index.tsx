@@ -64,16 +64,6 @@ export default function Home() {
                 </ExternalLink>
                 .
               </Text>
-              <Text>
-                Frontend source{' '}
-                <ExternalLink
-                  href='https://github.com/nathanhleung/ats-pr-bls-frontend'
-                  color={'#ced7fc'}
-                >
-                  code
-                </ExternalLink>
-                .
-              </Text>
             </HStack>
             <Center>
               <HStack gap={2}>

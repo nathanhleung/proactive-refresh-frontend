@@ -1,7 +1,3 @@
-import styles from '@styles/Home.module.css';
-import { Inter } from '@next/font/google';
-import Head from 'next/head';
-import SafeInfo from '@components/SafeInfo';
 import {
   Container,
   Text,
@@ -22,6 +18,8 @@ import {
   useWaitForTransaction,
 } from 'wagmi';
 import { useRouter } from 'next/router';
+import { BigNumber } from 'ethers';
+import gnosisSafeJson from 'data/abis/GnosisSafe.json';
 
 const stringToBytes = (str: string) => {
   const encoder = new TextEncoder();
@@ -166,22 +164,22 @@ const Safe: NextPage = () => {
 
   const { config } = usePrepareContractWrite({
     // redo this config
-    address: '0xf2d48C7F6ff69b487f277BC011D853577c3880eb',
-    abi: [
-      {
-        name: 'execTransaction',
-        type: 'function',
-        stateMutability: 'nonpayable',
-        inputs: [
-          {
-            to: '0000000000000000000000008a64e0b0506294ebb1ae2119d9f500dfb867033c',
-            signatures: stringToBytes(txSig),
-          },
-        ],
-        outputs: [],
-      },
-    ],
+    address: '0x8a64e0b0506294ebb1ae2119d9f500dfb867033c',
+    abi: gnosisSafeJson.abi,
     functionName: 'execTransaction',
+    args: [
+      '0x8a64e0b0506294ebb1ae2119d9f500dfb867033c',
+      BigNumber.from(10000000),
+      '0x00',
+      0,
+      BigNumber.from(0),
+      BigNumber.from(20000000),
+      BigNumber.from(60000000000),
+      '0x0000000000000000000000000000000000000000',
+      '0x8a64E0b0506294EbB1Ae2119d9F500dfb867033c',
+      '0x000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002600000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002',
+      // signatures: stringToBytes(txSig),
+    ],
   });
 
   const { data, write } = useContractWrite(config);
@@ -192,7 +190,12 @@ const Safe: NextPage = () => {
 
   return (
     <>
-      <Button variant='ghost' onClick={() => router.push('/')}>
+      <Button
+        variant='ghost'
+        color='white'
+        colorScheme='blackAlpha'
+        onClick={() => router.push('/')}
+      >
         Go back
       </Button>
       <Container textAlign='center' py={10} px={10} maxW='1200px'>
@@ -211,12 +214,12 @@ const Safe: NextPage = () => {
             size='lg'
           />
           <Button
-            disabled={!write}
+            disabled={!write || isLoading}
             onClick={() => write?.()}
             colorScheme='teal'
             background='teal.800'
           >
-            Verify Signatures
+            {isLoading ? 'Loading...' : 'Verify Signatures'}
           </Button>
           {isLoading && (
             <Box>
