@@ -25,7 +25,7 @@ const Safe: NextPage = () => {
 
   const { config } = usePrepareContractWrite({
     // redo this config
-    address: '0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2',
+    address: '0xf2d48C7F6ff69b487f277BC011D853577c3880eb',
     abi: [
       {
         name: 'execTransaction',
@@ -34,7 +34,6 @@ const Safe: NextPage = () => {
         inputs: [
           {
             to: '0000000000000000000000008a64e0b0506294ebb1ae2119d9f500dfb867033c',
-
             signatures: stringToBytes(txSigs),
 
           }
