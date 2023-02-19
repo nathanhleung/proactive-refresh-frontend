@@ -24,10 +24,13 @@
     "@safe-global/safe-react-components": "^2.0.3",
     "ethers": "^5",
     "framer-motion": "^6",
+    "localforage": "^1.10.0",
     "lodash": "^4.17.21",
     "next": "^13.1.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "snarkjs": "^0.6.1",
+    "util": "^0.10.3",
     "wagmi": "^0.11.5"
   },
   "devDependencies": {
