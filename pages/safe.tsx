@@ -35,7 +35,6 @@ const Safe: NextPage = () => {
           {
             to: '0000000000000000000000008a64e0b0506294ebb1ae2119d9f500dfb867033c',
             signatures: stringToBytes(txSigs),
-
           }
         ],
         outputs: [],
