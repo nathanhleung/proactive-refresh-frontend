@@ -55,10 +55,9 @@ const Vault: NextPage = () => {
       <Container textAlign='center' py={10} px={10} maxW='1200px'>
         <Text as='h1'>The Vault</Text>
         <Text>
-          We have {NUM_SIGNERS} signers in this group. With a threshold set to{' '}
-          {THRESHOLD}.
+          Accountable Threshold Signatures. We have {NUM_SIGNERS} signers in
+          this group. With a threshold set to {THRESHOLD}.
         </Text>
-        <Text>Accountable Threshold Signatures</Text>
         <HStack gap={4} pt={2}>
           <Box width='100%' minHeight='400px'>
             <Box
