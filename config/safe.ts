@@ -2,7 +2,10 @@ import { useBalance, useContractRead } from 'wagmi';
 import gnosisSafeJson from '../data/abis/GnosisSafe.json';
 
 function useSafeAddress() {
-  return process.env.NEXT_PUBLIC_SAFE_ADDRESS;
+  const addr: `0x${string}` | undefined = process.env
+    .NEXT_PUBLIC_SAFE_ADDRESS as `0x${string}` | undefined;
+
+  return addr;
 }
 
 function useSafeBalance(token?: string) {
