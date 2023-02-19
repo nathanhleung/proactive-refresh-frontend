@@ -69,15 +69,15 @@ export default function Home() {
           </HStack>
           <Center>
             <Button padding= '0.6em 1.2em'
-          border-radius= '0.375em'
-          cursor='pointer'
-          color= 'white'
-          background= 'linear-gradient(-45deg, #647DEE,#7F53AC)'
-          background-size='400% 400%'
-          transition= '0.3s'
-          onClick={() => location.href ='/vault'}
-          _hover={{opacity: '0.9'}}
-          >
+              border-radius= '0.375em'
+              cursor='pointer'
+              color= 'white'
+              background= 'linear-gradient(-45deg, #647DEE,#7F53AC)'
+              background-size='400% 400%'
+              transition= '0.3s'
+              onClick={() => location.href ='/vault'}
+              _hover={{opacity: '0.9'}}
+              >
               <Text fontSize={19} fontWeight='500'>
                 {`Enter the vault`}
               </Text>
