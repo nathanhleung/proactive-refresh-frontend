@@ -64,6 +64,7 @@ const Vault: NextPage = () => {
           Accountable Threshold Signatures. We have {NUM_SIGNERS} signers in
           this group. With a threshold set to {THRESHOLD}.
         </Text>
+        <Timer maxTime={MAX_TIME} time={time} setTime={setTime} />
         <HStack
           gap={4}
           pt={2}
@@ -214,7 +215,6 @@ const Vault: NextPage = () => {
             </Box>
           </Box>
         </HStack>
-        <Timer maxTime={MAX_TIME} time={time} setTime={setTime} />
       </Container>
     </>
   );
