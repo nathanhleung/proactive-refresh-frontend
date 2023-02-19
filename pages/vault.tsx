@@ -98,7 +98,7 @@ const Vault: NextPage = () => {
                         pk.secure === 'true' ? 'green.300' : 'red.400'
                       }
                     >
-                      <Text>{abridgeKey(pk.key)}</Text>
+                      <Text fontWeight='bold'>{abridgeKey(pk.key)}</Text>
                     </Box>
                   ))}
                   {ATSState && ATSState.breached === 'true' && (
@@ -137,7 +137,7 @@ const Vault: NextPage = () => {
                         pk.secure === 'true' ? 'green.300' : 'red.400'
                       }
                     >
-                      <Text>{abridgeKey(pk.key)}</Text>
+                      <Text fontWeight='bold'>{abridgeKey(pk.key)}</Text>
                     </Box>
                   ))}
                   <Text>
@@ -169,30 +169,33 @@ const Vault: NextPage = () => {
                     borderRadius={4}
                     background={pk.secure === 'true' ? 'green.300' : 'red.400'}
                   >
-                    <Text>{abridgeKey(pk.key)}</Text>
+                    <Text fontWeight='bold'>{abridgeKey(pk.key)}</Text>
                   </Box>
                 ))}
-              <Text>
-                Collective private key: {abridgeKey(ATSPRstate?.collective_pk)}
-              </Text>
+
               {ATSPRstate &&
-                ATSState.breached === 'true' &&
-                ATSPRstate.breached === 'false' && (
-                  <Box>
-                    <Text as='h2' color='green.100' pt={4}>
-                      🛡️⚔️ Safe ⚔️🛡️
-                    </Text>
+              ATSState.breached === 'true' &&
+              ATSPRstate.breached === 'false' ? (
+                <Box>
+                  <Text as='h2' color='green.100' pt={4}>
+                    🛡️⚔️ Safe ⚔️🛡️
+                  </Text>
+                  <Text>
+                    Adversary is unable to send a valid proof and signature.
+                  </Text>
+                  <Text>
                     <Text>
-                      Adversary is unable to send a valid proof and signature.
+                      Collective private key:{' '}
+                      {abridgeKey(ATSState?.collective_pk)}
                     </Text>
-                    <Text>
-                      <Text>
-                        Collective private key:{' '}
-                        {abridgeKey(ATSState?.collective_pk)}
-                      </Text>
-                    </Text>
-                  </Box>
-                )}
+                  </Text>
+                </Box>
+              ) : (
+                <Text>
+                  Collective private key:{' '}
+                  {abridgeKey(ATSPRstate?.collective_pk)}
+                </Text>
+              )}
             </Box>
           </Box>
         </HStack>
