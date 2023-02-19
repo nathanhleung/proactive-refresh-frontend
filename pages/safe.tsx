@@ -15,7 +15,6 @@ import {
 } from '@chakra-ui/react';
 import { Account } from '@components/Account';
 import { useState } from 'react';
-import useIsHydrated from '@hooks/useIsHydrated';
 import { NextPage } from 'next';
 import {
   useContractWrite,
@@ -32,7 +31,7 @@ const stringToBytes = (str: string) => {
 const Safe: NextPage = () => {
   const router = useRouter();
   //const isHydrated = useIsHydrated()
-  const [txSigs, setTxSigs] = useState('');
+  const [txSig, setTxSig] = useState<string>('');
 
   /*
   address to,uint256 value,bytes data,uint8 operation,uint256 safeTxGas,uint256 baseGas,uint256 gasPrice,address gasToken,address refundReceiver,bytes signatures
@@ -49,7 +48,7 @@ const Safe: NextPage = () => {
         inputs: [
           {
             to: '0000000000000000000000008a64e0b0506294ebb1ae2119d9f500dfb867033c',
-            signatures: stringToBytes(txSigs),
+            signatures: stringToBytes(txSig),
           },
         ],
         outputs: [],
@@ -63,7 +62,6 @@ const Safe: NextPage = () => {
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,
   });
-
   return (
     <>
       <Button variant='ghost' onClick={() => router.push('/')}>
@@ -77,11 +75,11 @@ const Safe: NextPage = () => {
         <Account />
         <Divider m={4} />
         <VStack gap={4}>
-          <Text as='h3'>Add Signatures</Text>
+          <Text as='h3'>Provide collective signature</Text>
           <Input
-            placeholder='Add Signatures'
-            value={txSigs}
-            onChange={(e) => setTxSigs(e.target.value)}
+            placeholder='Collective signature'
+            value={txSig}
+            onChange={(e) => setTxSig(e.target.value)}
             size='lg'
           />
           <Button
