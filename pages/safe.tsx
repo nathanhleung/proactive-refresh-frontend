@@ -7,20 +7,45 @@ import { Account } from '@components/Account';
 import { useState } from 'react';
 import useIsHydrated from '@hooks/useIsHydrated';
 import { NextPage } from 'next';
+import { useContractWrite, usePrepareContractWrite } from 'wagmi'
+
 
 const stringToBytes = (str: string) => {
   const encoder = new TextEncoder();
   return encoder.encode(str)
 }
 
-const callContract = (signatures: string) => {
-  const sigs = stringToBytes(signatures)
-  
-}
-
 const Safe: NextPage = () => {
   //const isHydrated = useIsHydrated()
-  const [txValue, setTxValue] =  useState('')
+  const [txSigs, setTxSigs] =  useState('')
+
+  /*
+  address to,uint256 value,bytes data,uint8 operation,uint256 safeTxGas,uint256 baseGas,uint256 gasPrice,address gasToken,address refundReceiver,bytes signatures
+  */
+
+  const { config } = usePrepareContractWrite({
+    // redo this config
+    address: '0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2',
+    abi: [
+      {
+        name: 'execTransaction',
+        type: 'function',
+        stateMutability: 'nonpayable',
+        inputs: [
+          {
+            to: '0000000000000000000000008a64e0b0506294ebb1ae2119d9f500dfb867033c',
+
+            signatures: stringToBytes(txSigs),
+
+          }
+        ],
+        outputs: [],
+      },
+    ],
+    functionName: 'execTransaction',
+  })
+
+  const { write } = useContractWrite(config)
 
   return (
     <>
@@ -35,18 +60,17 @@ const Safe: NextPage = () => {
         Add Signatures
         <Input
             placeholder="Add Signatures"
-            value={txValue}
-            onChange={e => setTxValue(e.target.value)}
+            value={txSigs}
+            onChange={e => setTxSigs(e.target.value)}
             size='lg'
           />
-        <Button>
+        <Button
+        disabled={!write}
+        onClick={() => write?.()}>
           Verify Signatures
         </Button>
       </Container>
-
-      
       </Head>
-      
     </>
   );
 }
