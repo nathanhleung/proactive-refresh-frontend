@@ -7,8 +7,8 @@ import proof from '@data/dummy-proof.json';
 import { abridgeKey } from '@config/demo';
 import { useRouter } from 'next/router';
 
-const NUM_SIGNERS = 9;
-const THRESHOLD = 6;
+const NUM_SIGNERS = 7;
+const THRESHOLD = 5;
 
 const MAX_TIME = 15;
 
