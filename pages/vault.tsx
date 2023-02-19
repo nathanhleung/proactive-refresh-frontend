@@ -3,6 +3,7 @@ import { Timer } from '@components/Timer';
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import demo from '@data/sim.json';
+import proof from '@data/dummy-proof.json';
 import { abridgeKey } from '@config/demo';
 import { useRouter } from 'next/router';
 
@@ -63,8 +64,17 @@ const Vault: NextPage = () => {
           Accountable Threshold Signatures. We have {NUM_SIGNERS} signers in
           this group. With a threshold set to {THRESHOLD}.
         </Text>
-        <HStack gap={4} pt={2}>
-          <Box width='100%' minHeight='400px'>
+        <HStack
+          gap={4}
+          pt={2}
+          align='flex-start'
+          alignItems='flex-start'
+          verticalAlign='top'
+        >
+          <Box
+            width={ATSState && ATSState.breached === 'true' ? '50%' : '100%'}
+            minHeight='400px'
+          >
             <Box
               background='gray.700'
               width='100%'
@@ -97,14 +107,18 @@ const Vault: NextPage = () => {
                         ⚡💥Breached💥⚡
                       </Text>
                       <Text>
-                        Transaction sent to chain with the following signature
-                        and proof.
+                        Transaction sent to chain with the following zero
+                        knowledge proof.
                       </Text>
-                      <Box background='gray.600' opacity={0.8} my={2} py={2}>
-                        <Text as='h4'>Signature</Text>
-                      </Box>
-                      <Box background='gray.600' opacity={0.8} my={2} py={2}>
-                        <Text as='h4'>Proof</Text>
+                      <Box
+                        background='gray.600'
+                        p={2}
+                        opacity={0.8}
+                        my={2}
+                        py={2}
+                      >
+                        <Text as='h4'>ZKProof</Text>
+                        <Text>{JSON.stringify(proof)}</Text>
                       </Box>
                     </Box>
                   )}
