@@ -55,7 +55,12 @@ const Vault: NextPage = () => {
 
   return (
     <>
-      <Button variant='ghost' onClick={() => router.push('/')}>
+      <Button
+        variant='ghost'
+        color='white'
+        colorScheme='blackAlpha'
+        onClick={() => router.push('/')}
+      >
         Go back
       </Button>
       <Container textAlign='center' py={10} px={10} maxW='1200px'>
