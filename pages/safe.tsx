@@ -1,4 +1,4 @@
-import styles from '@/styles/Home.module.css';
+import styles from '@styles/Home.module.css';
 import { Inter } from '@next/font/google';
 import Head from 'next/head';
 import SafeInfo from '@components/SafeInfo';
