@@ -9,8 +9,14 @@ import {
   VStack,
   HStack,
   Center,
+  Button,
+  keyframes
 } from '@chakra-ui/react';
 import Link from 'next/link';
+import { Inter } from '@next/font/google'
+
+const font = Inter({ subsets: ['latin'], weight: '400'})
+const headerFont = Inter({ subsets: ['latin'], weight: '600'})
 
 export default function Home() {
   return (
@@ -18,10 +24,10 @@ export default function Home() {
       <main className={styles.main}>
         <Box minH='100vh' justifyContent='space-between'>
           <Box fontSize={60} width='100%'>
-            proactive refresh
-            <Divider py={2} />
-            Enterprise-grade custody and authentication.
-            <Text fontSize={24} fontWeight={300} pt={2}>
+            <Text className={headerFont.className} color={'#aebdfa'}>proactive refresh</Text>
+            <Divider py={2}/>
+            <Text fontSize={40}>Enterprise-grade custody and authentication.</Text>
+            <Text fontSize={20} fontWeight={300} pt={2}>
               The safest and most secure way to transfer funds, sign messages,
               and protect what&apos;s most important to your organization.{' '}
               Enabled by <></>Accountable Threshold Signatures with Proactive
@@ -29,11 +35,12 @@ export default function Home() {
             </Text>
           </Box>
           <HStack gap={3} fontSize={20} justifyContent='center' py={8}>
-            <Text>
+            <Text className={font.className}>
               Read the paper{' '}
               <ExternalLink
                 href='https://eprint.iacr.org/2022/1656.pdf'
                 target='_blank'
+                color={'#ced7fc'}
               >
                 here
               </ExternalLink>
@@ -44,6 +51,7 @@ export default function Home() {
               <ExternalLink
                 href='https://github.com/lyronctk/ats-pr-bls'
                 target='_blank'
+                color={'#ced7fc'}
               >
                 code
               </ExternalLink>
@@ -51,32 +59,37 @@ export default function Home() {
             </Text>
             <Text>
               Frontend source{' '}
-              <ExternalLink href='https://github.com/nathanhleung/ats-pr-bls-frontend'>
+              <ExternalLink 
+              href='https://github.com/nathanhleung/ats-pr-bls-frontend'
+              color={'#ced7fc'}>
                 code
               </ExternalLink>
               .
             </Text>
           </HStack>
           <Center>
-            <Link href='/vault'>
-              <Box
-                borderRadius={10}
-                backgroundColor='rgb(2,0,36)'
-                background='radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,121,91,1) 35%, rgba(9,124,118,1) 66%, rgba(0,212,255,1) 100%)'
-                width={'60%'}
-                height={80}
-              >
-                <Center height='100%'>
-                  <Text fontSize={40} fontWeight='extrabold'>
-                    {`Enter the vault ->`}
-                  </Text>
-                </Center>
-              </Box>
-            </Link>
+            <Button padding= '0.6em 1.2em'
+          border-radius= '0.375em'
+          cursor='pointer'
+          color= 'white'
+          background= 'linear-gradient(-45deg, darkmagenta, crimson, orange)'
+          background-size='400% 400%'
+          transition= '0.3s'
+          onClick={() => location.href ='/vault'}
+          _hover={{opacity: '0.9'}}
+          >
+              <Text fontSize={20} fontWeight='bold'>
+                {`Enter the vault`}
+              </Text>
+            </Button>
           </Center>
         </Box>
-        <Box pt={10}>
-          <Text fontSize={20}>
+        <Box pt={4}>
+          <Text fontSize={24} 
+          fontWeight={600}
+          paddingBottom={2}
+          color={'#bfcbfb'}>About the Cryptography</Text>
+          <Text fontSize={18} color='lightgrays'>
             Accountable Threshold Signatures with Proactive Refresh were first
             described by Dan Boneh, cryptography researcher and professor at
             Stanford University. It is a way for a quorum of members of an
