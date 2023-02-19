@@ -10,13 +10,13 @@ import {
   HStack,
   Center,
   Button,
-  keyframes
+  keyframes,
 } from '@chakra-ui/react';
 import Link from 'next/link';
-import { Inter } from '@next/font/google'
+import { Inter } from '@next/font/google';
 
-const font = Inter({ subsets: ['latin'], weight: '400'})
-const headerFont = Inter({ subsets: ['latin'], weight: '600'})
+const font = Inter({ subsets: ['latin'], weight: '400' });
+const headerFont = Inter({ subsets: ['latin'], weight: '600' });
 
 export default function Home() {
   return (
@@ -24,9 +24,13 @@ export default function Home() {
       <main className={styles.main}>
         <Box minH='100vh' justifyContent='space-between'>
           <Box fontSize={60} width='100%'>
-            <Text className={headerFont.className} color={'#aebdfa'}>proactive refresh</Text>
-            <Divider py={2}/>
-            <Text fontSize={40}>Enterprise-grade custody and authentication.</Text>
+            <Text className={headerFont.className} color={'#aebdfa'}>
+              proactive refresh
+            </Text>
+            <Divider py={2} />
+            <Text fontSize={40}>
+              Enterprise-grade custody and authentication.
+            </Text>
             <Text fontSize={20} fontWeight={300} pt={2}>
               The safest and most secure way to transfer funds, sign messages,
               and protect what&apos;s most important to your organization.{' '}
@@ -59,25 +63,28 @@ export default function Home() {
             </Text>
             <Text>
               Frontend source{' '}
-              <ExternalLink 
-              href='https://github.com/nathanhleung/ats-pr-bls-frontend'
-              color={'#ced7fc'}>
+              <ExternalLink
+                href='https://github.com/nathanhleung/ats-pr-bls-frontend'
+                color={'#ced7fc'}
+              >
                 code
               </ExternalLink>
               .
             </Text>
           </HStack>
           <Center>
-            <Button padding= '0.6em 1.2em'
-          border-radius= '0.375em'
-          cursor='pointer'
-          color= 'white'
-          background= 'linear-gradient(-45deg, darkmagenta, crimson, orange)'
-          background-size='400% 400%'
-          transition= '0.3s'
-          onClick={() => location.href ='/vault'}
-          _hover={{opacity: '0.9'}}
-          >
+            <Button
+              padding='1em 1.2em'
+              height='70px'
+              border-radius='0.375em'
+              cursor='pointer'
+              color='white'
+              background='linear-gradient(-40deg, rgba(2,0,36,1), rgba(9,121,91,1), rgba(9,124,118,1), rgba(0,212,255,1))'
+              background-size='400% 400%'
+              transition='0.3s'
+              onClick={() => (location.href = '/vault')}
+              _hover={{ opacity: '0.9' }}
+            >
               <Text fontSize={20} fontWeight='bold'>
                 {`Enter the vault`}
               </Text>
@@ -85,10 +92,14 @@ export default function Home() {
           </Center>
         </Box>
         <Box pt={4}>
-          <Text fontSize={24} 
-          fontWeight={600}
-          paddingBottom={2}
-          color={'#bfcbfb'}>About the Cryptography</Text>
+          <Text
+            fontSize={24}
+            fontWeight={600}
+            paddingBottom={2}
+            color={'#bfcbfb'}
+          >
+            About the Cryptography
+          </Text>
           <Text fontSize={18} color='lightgrays'>
             Accountable Threshold Signatures with Proactive Refresh were first
             described by Dan Boneh, cryptography researcher and professor at

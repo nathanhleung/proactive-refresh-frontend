@@ -65,6 +65,7 @@ const Vault: NextPage = () => {
               background='gray.700'
               height='400px'
               width='100%'
+              borderRadius={4}
               p={4}
               justifyContent='space-between'
             >
@@ -83,6 +84,7 @@ const Vault: NextPage = () => {
                   </Box>
                 ))}
               <Text>Quorum public key: </Text>
+              <Text>Collective private key: </Text>
             </Box>
           </Box>
           <Box width='100%'>
@@ -108,6 +110,7 @@ const Vault: NextPage = () => {
                   </Box>
                 ))}
               <Text>Quorum public key: </Text>
+              <Text>Collective private key: </Text>
             </Box>
           </Box>
         </HStack>
