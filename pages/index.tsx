@@ -4,17 +4,19 @@ import {
   Text,
   Container,
   Divider,
-  Link,
+  Link as ExternalLink,
   Box,
   VStack,
   HStack,
+  Center,
 } from '@chakra-ui/react';
+import Link from 'next/link';
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <Box minH='60vh' justifyContent='space-between'>
+        <Box minH='100vh' justifyContent='space-between'>
           <Box fontSize={60} width='100%'>
             proactive refresh
             <Divider py={2} />
@@ -29,30 +31,49 @@ export default function Home() {
           <HStack gap={3} fontSize={20} justifyContent='center' py={8}>
             <Text>
               Read the paper{' '}
-              <Link href='https://eprint.iacr.org/2022/1656.pdf'>here</Link>.
+              <ExternalLink
+                href='https://eprint.iacr.org/2022/1656.pdf'
+                target='_blank'
+              >
+                here
+              </ExternalLink>
+              .
             </Text>
             <Text>
               Library source{' '}
-              <Link href='https://github.com/lyronctk/ats-pr-bls'>code</Link>.
+              <ExternalLink
+                href='https://github.com/lyronctk/ats-pr-bls'
+                target='_blank'
+              >
+                code
+              </ExternalLink>
+              .
             </Text>
             <Text>
               Frontend source{' '}
-              <Link href='https://github.com/nathanhleung/ats-pr-bls-frontend'>
+              <ExternalLink href='https://github.com/nathanhleung/ats-pr-bls-frontend'>
                 code
-              </Link>
+              </ExternalLink>
               .
             </Text>
           </HStack>
-        </Box>
-        <Box
-          pt={40}
-          borderRadius={10}
-          backgroundColor='#237597'
-          width={200}
-          height={80}
-          textAlign='center'
-        >
-          {`Our safe ->`}
+          <Center>
+            <Link href='/vault'>
+              <Box
+                borderRadius={10}
+                backgroundColor='rgb(2,0,36)'
+                background='radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,121,91,1) 35%, rgba(9,124,118,1) 66%, rgba(0,212,255,1) 100%)'
+                width={'60%'}
+                height={80}
+              >
+                <Center height='100%'>
+                  <Text fontSize={40} fontWeight='extrabold'>
+                    {`Enter the vault ->`}
+                  </Text>
+                </Center>
+              </Box>
+            </Link>
+          </Center>
         </Box>
         <Box pt={10}>
           <Text fontSize={20}>
