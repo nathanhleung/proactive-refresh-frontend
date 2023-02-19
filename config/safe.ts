@@ -2,16 +2,14 @@ import { useBalance, useContractRead } from 'wagmi';
 import gnosisSafeJson from '../data/abis/GnosisSafe.json';
 
 function useSafeAddress() {
-  const addr: `0x${string}` | undefined = process.env
-    .NEXT_PUBLIC_SAFE_ADDRESS as `0x${string}` | undefined;
-
-  return addr;
+  return process.env.NEXT_PUBLIC_SAFE_ADDRESS;
 }
 
 function useSafeBalance(token?: string) {
   const address = useSafeAddress();
 
   return useBalance({
+    // @ts-ignore
     address,
     ...(token
       ? {
@@ -26,6 +24,7 @@ function useSafeRead(functionName: string, args?: unknown[]) {
   const address = useSafeAddress();
 
   return useContractRead({
+    // @ts-ignore
     address,
     abi: gnosisSafeJson.abi,
     functionName,

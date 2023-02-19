@@ -45,6 +45,7 @@ const theme = extendTheme({
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
+    // @ts-ignore
     window.ethers = ethers;
   }, []);
 

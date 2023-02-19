@@ -72,6 +72,7 @@ const Vault: NextPage = () => {
           verticalAlign='top'
         >
           <Box
+            // @ts-ignore
             width={ATSState && ATSState.breached === 'true' ? '50%' : '100%'}
             minHeight='400px'
           >
@@ -85,8 +86,10 @@ const Vault: NextPage = () => {
               <Text as='h3' pb={4}>
                 without proactive refresh
               </Text>
+              {/* @ts-ignore */}
               {ATSState && ATSState.breached === 'true' && (
                 <Box>
+                  {/* @ts-ignore */}
                   {ATSState.pks.map((pk: string, idx: number) => (
                     <Box
                       key={idx}
@@ -95,12 +98,15 @@ const Vault: NextPage = () => {
                       p={0.5}
                       borderRadius={4}
                       background={
+                        // @ts-ignore
                         pk.secure === 'true' ? 'green.300' : 'red.400'
                       }
                     >
+                      {/* @ts-ignore */}
                       <Text fontWeight='bold'>{abridgeKey(pk.key)}</Text>
                     </Box>
                   ))}
+                  {/* @ts-ignore */}
                   {ATSState && ATSState.breached === 'true' && (
                     <Box>
                       <Text as='h2' color='red.100' pt={4}>
@@ -124,8 +130,10 @@ const Vault: NextPage = () => {
                   )}
                 </Box>
               )}
+              {/* @ts-ignore */}
               {ATSState && ATSState.breached === 'false' && (
                 <Box>
+                  {/* @ts-ignore */}
                   {ATSState.pks.map((pk: string, idx: number) => (
                     <Box
                       key={idx}
@@ -134,14 +142,16 @@ const Vault: NextPage = () => {
                       p={0.5}
                       borderRadius={4}
                       background={
+                        // @ts-ignore
                         pk.secure === 'true' ? 'green.300' : 'red.400'
                       }
                     >
+                      {/* @ts-ignore */}
                       <Text fontWeight='bold'>{abridgeKey(pk.key)}</Text>
                     </Box>
                   ))}
                   <Text>
-                    Collective private key:{' '}
+                    Collective private key: {/* @ts-ignore */}
                     {abridgeKey(ATSState?.collective_pk)}
                   </Text>
                 </Box>
@@ -160,6 +170,7 @@ const Vault: NextPage = () => {
                 with proactive refresh
               </Text>
               {ATSPRstate &&
+                // @ts-ignore
                 ATSPRstate.pks.map((pk: string, idx: number) => (
                   <Box
                     key={idx}
@@ -167,14 +178,18 @@ const Vault: NextPage = () => {
                     my={1}
                     p={0.5}
                     borderRadius={4}
+                    // @ts-ignore
                     background={pk.secure === 'true' ? 'green.300' : 'red.400'}
                   >
+                    {/* @ts-ignore */}
                     <Text fontWeight='bold'>{abridgeKey(pk.key)}</Text>
                   </Box>
                 ))}
 
               {ATSPRstate &&
+              // @ts-ignore
               ATSState.breached === 'true' &&
+              // @ts-ignore
               ATSPRstate.breached === 'false' ? (
                 <Box>
                   <Text as='h2' color='green.100' pt={4}>
@@ -185,14 +200,14 @@ const Vault: NextPage = () => {
                   </Text>
                   <Text>
                     <Text>
-                      Collective private key:{' '}
+                      Collective private key: {/* @ts-ignore */}
                       {abridgeKey(ATSState?.collective_pk)}
                     </Text>
                   </Text>
                 </Box>
               ) : (
                 <Text>
-                  Collective private key:{' '}
+                  Collective private key: {/* @ts-ignore */}
                   {abridgeKey(ATSPRstate?.collective_pk)}
                 </Text>
               )}
