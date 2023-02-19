@@ -43,8 +43,14 @@ export default function Home() {
             </Text>
         </Container>
         
-        <Box>
-
+        <Box
+        marginTop={40}
+        borderRadius={10}
+        backgroundColor='#237597'
+        width={200}
+        height={80}
+        textAlign='center'>
+        Our safe ->
         </Box> 
         
     </Container>
