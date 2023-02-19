@@ -45,7 +45,7 @@ export const Timer = ({
       ) : (
         <Box fontSize={25} py={4}>
           <Button onClick={resetTimer} color='blackAlpha.800'>
-            Reset
+            Reset simulation
           </Button>
         </Box>
       )}
