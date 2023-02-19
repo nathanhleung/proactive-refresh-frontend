@@ -7,7 +7,7 @@ import { Account } from '@components/Account';
 import { useState } from 'react';
 import useIsHydrated from '@hooks/useIsHydrated';
 import { NextPage } from 'next';
-import { useContractWrite, usePrepareContractWrite } from 'wagmi'
+import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi'
 
 
 const stringToBytes = (str: string) => {
@@ -45,7 +45,11 @@ const Safe: NextPage = () => {
     functionName: 'execTransaction',
   })
 
-  const { write } = useContractWrite(config)
+  const { data, write } = useContractWrite(config)
+
+  const { isLoading, isSuccess } = useWaitForTransaction({
+    hash: data?.hash,
+  })
 
   return (
     <>
@@ -69,6 +73,13 @@ const Safe: NextPage = () => {
         onClick={() => write?.()}>
           Verify Signatures
         </Button>
+
+        <div>
+          Successfully verified BLS signature!
+          <div>
+            <a href={`https://etherscan.io/tx/${data?.hash}`}>Etherscan</a>
+          </div>
+        </div>
       </Container>
       </Head>
     </>
