@@ -1,5 +1,5 @@
-import { useBalance, useContractRead } from "wagmi";
-import gnosisSafeJson from "../data/abis/GnosisSafe.json";
+import { useBalance, useContractRead } from 'wagmi';
+import gnosisSafeJson from '../data/abis/GnosisSafe.json';
 
 function useSafeAddress() {
   return process.env.NEXT_PUBLIC_SAFE_ADDRESS;

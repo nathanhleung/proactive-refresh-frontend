@@ -1,21 +1,21 @@
-import { configureChains, createClient } from "wagmi";
-import { InjectedConnector } from "wagmi/connectors/injected";
-import { publicProvider } from "wagmi/providers/public";
+import { configureChains, createClient } from 'wagmi';
+import { InjectedConnector } from 'wagmi/connectors/injected';
+import { publicProvider } from 'wagmi/providers/public';
 
 const { chains, provider } = configureChains(
   [
     {
       id: 7001,
-      name: "Zetachain Athens 2",
+      name: 'Zetachain Athens 2',
       nativeCurrency: {
-        name: "Zeta",
-        symbol: "ZETA",
+        name: 'Zeta',
+        symbol: 'ZETA',
         decimals: 18,
       },
-      network: "",
+      network: '',
       rpcUrls: {
-        public: { http: ["https://api.athens2.zetachain.com/evm"] },
-        default: { http: ["https://api.athens2.zetachain.com/evm"] },
+        public: { http: ['https://api.athens2.zetachain.com/evm'] },
+        default: { http: ['https://api.athens2.zetachain.com/evm'] },
       },
     },
   ],

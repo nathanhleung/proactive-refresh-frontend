@@ -1,13 +1,21 @@
-import styles from "@styles/Home.module.css";
-import { Heading, Text, Container, Divider, Link, Box, VStack, HStack } from '@chakra-ui/react'
+import styles from '@styles/Home.module.css';
+import {
+  Heading,
+  Text,
+  Container,
+  Divider,
+  Link,
+  Box,
+  VStack,
+  HStack,
+} from '@chakra-ui/react';
 
 export default function Home() {
-
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <Box minH="60vh" justifyContent="space-between">
-          <Box fontSize={60} width="100%">
+        <Box minH='60vh' justifyContent='space-between'>
+          <Box fontSize={60} width='100%'>
             proactive refresh
             <Divider py={2} />
             Enterprise-grade custody and authentication.
@@ -16,13 +24,10 @@ export default function Home() {
               and protect what&apos;s most important to your organization.
             </Text>
           </Box>
-          <Box
-            pt={10}
-          >
-            <Text
-              fontWeight={600}
-              fontSize={24}>
-              Enabled by <></>Accountable Threshold Signatures with Proactive Refresh.
+          <Box pt={10}>
+            <Text fontWeight={600} fontSize={24}>
+              Enabled by <></>Accountable Threshold Signatures with Proactive
+              Refresh.
             </Text>
             <Text fontSize={20}>
               Accountable Threshold Signatures with Proactive Refresh were first
@@ -31,20 +36,26 @@ export default function Home() {
               organization to securely sign messages. Unlike previous secret
               sharing schemes, the scheme we implement refreshes signers&apos;
               secrets once every 30 seconds, ensuring that an adversary must
-              compromise all signers&apos; keys within a 30-second window in order to
-              mount a successful attack. This is significantly more secure than
-              previous signature schemes.
+              compromise all signers&apos; keys within a 30-second window in
+              order to mount a successful attack. This is significantly more
+              secure than previous signature schemes.
             </Text>
           </Box>
           <HStack gap={3} fontSize={20}>
             <Text>
-              Read the paper <Link href='https://eprint.iacr.org/2022/1656.pdf'>here</Link>.
+              Read the paper{' '}
+              <Link href='https://eprint.iacr.org/2022/1656.pdf'>here</Link>.
             </Text>
             <Text>
-              Library source <Link href='https://github.com/lyronctk/ats-pr-bls'>code</Link>.
+              Library source{' '}
+              <Link href='https://github.com/lyronctk/ats-pr-bls'>code</Link>.
             </Text>
             <Text>
-              Frontend source <Link href='https://github.com/nathanhleung/ats-pr-bls-frontend'>code</Link>.
+              Frontend source{' '}
+              <Link href='https://github.com/nathanhleung/ats-pr-bls-frontend'>
+                code
+              </Link>
+              .
             </Text>
           </HStack>
         </Box>
@@ -59,6 +70,6 @@ export default function Home() {
           {`Our safe ->`}
         </Box>
       </main>
-    </div >
-  )
+    </div>
+  );
 }
