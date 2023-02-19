@@ -1,5 +1,5 @@
 import { useAccount, useConnect, useDisconnect, useNetwork } from 'wagmi';
-import { Button, Card, Center, HStack, Text } from '@chakra-ui/react';
+import { Button, Card, Center, HStack, Text, VStack } from '@chakra-ui/react';
 import { abridgeKey } from '@config/demo';
 
 export function Account() {
@@ -11,18 +11,32 @@ export function Account() {
 
   if (isConnected) {
     return (
-      <Card
-        alignContent={'center'}
-        alignItems={'center'}
-        padding='2'
-        width={80}
-      >
-        {connector ? `Connected to ${connector.name}` : 'Not connected'}
-        <Text>
-          Account: {abridgeKey(address)} | Network ID: {`${chain?.id}`}
-        </Text>
-        <Button onClick={() => disconnect()}>Disconnect</Button>
-      </Card>
+      <Center my={2}>
+        <Card
+          alignContent={'center'}
+          alignItems={'center'}
+          padding='2'
+          width={80}
+          background='gray.800'
+          style={{ color: 'white' }}
+          variant='outline'
+        >
+          <VStack gap={1}>
+            <Text fontWeight='bold'>
+              {connector ? `Connected to ${connector.name}` : 'Not connected'}
+            </Text>
+            <Text>Account: {abridgeKey(address)}</Text>
+            <Text>Network ID: {`${chain?.id}`}</Text>
+            <Button
+              onClick={() => disconnect()}
+              colorScheme='teal'
+              background='teal.800'
+            >
+              Disconnect
+            </Button>
+          </VStack>
+        </Card>
+      </Center>
     );
   }
 
@@ -33,6 +47,7 @@ export function Account() {
           {connectors.map((connector) => (
             <Button
               colorScheme='teal'
+              background='teal.800'
               my={4}
               disabled={!connector.ready}
               key={connector.id}

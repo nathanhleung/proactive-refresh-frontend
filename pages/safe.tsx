@@ -2,7 +2,17 @@ import styles from '@styles/Home.module.css';
 import { Inter } from '@next/font/google';
 import Head from 'next/head';
 import SafeInfo from '@components/SafeInfo';
-import { Container, Text, Input, Divider, Button } from '@chakra-ui/react';
+import {
+  Container,
+  Text,
+  Input,
+  Divider,
+  Button,
+  VStack,
+  Box,
+  Link,
+  Spinner,
+} from '@chakra-ui/react';
 import { Account } from '@components/Account';
 import { useState } from 'react';
 import useIsHydrated from '@hooks/useIsHydrated';
@@ -65,23 +75,44 @@ const Safe: NextPage = () => {
           Safe with Accountable Threshold Signatures with Proactive Refresh
         </Text>
         <Account />
-        <Divider />
-        Add Signatures
-        <Input
-          placeholder='Add Signatures'
-          value={txSigs}
-          onChange={(e) => setTxSigs(e.target.value)}
-          size='lg'
-        />
-        <Button disabled={!write} onClick={() => write?.()}>
-          Verify Signatures
-        </Button>
-        <div>
-          Successfully verified BLS signature!
-          <div>
-            <a href={`https://etherscan.io/tx/${data?.hash}`}>Etherscan</a>
-          </div>
-        </div>
+        <Divider m={4} />
+        <VStack gap={4}>
+          <Text as='h3'>Add Signatures</Text>
+          <Input
+            placeholder='Add Signatures'
+            value={txSigs}
+            onChange={(e) => setTxSigs(e.target.value)}
+            size='lg'
+          />
+          <Button
+            disabled={!write}
+            onClick={() => write?.()}
+            colorScheme='teal'
+            background='teal.800'
+          >
+            Verify Signatures
+          </Button>
+          {isLoading && (
+            <Box>
+              Verifying BLS signature!
+              <Spinner />
+              See on{' '}
+              <Link href={`https://etherscan.io/tx/${data?.hash}`}>
+                Etherscan
+              </Link>
+            </Box>
+          )}
+          {isSuccess && (
+            <Box>
+              Successfully verified BLS signature!
+              <br />
+              See on{' '}
+              <Link href={`https://etherscan.io/tx/${data?.hash}`}>
+                Etherscan
+              </Link>
+            </Box>
+          )}
+        </VStack>
       </Container>
     </>
   );
