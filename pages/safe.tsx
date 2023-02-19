@@ -1,8 +1,7 @@
 import styles from "@/styles/Home.module.css";
 import { Inter } from "@next/font/google";
 import Head from "next/head";
-import Image from "next/image";
-import SafeInfo from "@/components/SafeInfo";
+import SafeInfo from "@components/SafeInfo";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +25,7 @@ export default function Safe() {
             </h2>
             <p className="mt-8">
               The safest and most secure way to transfer funds, sign messages,
-              and protect what's most important to your organization.
+              and protect {`what's`} most important to your organization.
             </p>
             <SafeInfo className="mt-8" />
           </div>

@@ -1,12 +1,12 @@
-import { useSafeAddress, useSafeBalance, useSafeRead } from "@/config/safe";
-import useIsHydrated from "@/hooks/useIsHydrated";
+import { Card } from "@chakra-ui/react";
+import { useSafeAddress, useSafeBalance, useSafeRead } from "@config/safe";
+import useIsHydrated from "@hooks/useIsHydrated";
 import { useSafeAppsSDK } from "@safe-global/safe-apps-react-sdk";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
-import { Card } from "@mui/material";
 
-export default function SafeInfo(props) {
+export default function SafeInfo(props: any) {
   const isHydrated = useIsHydrated();
 
   const { sdk, connected, safe } = useSafeAppsSDK();
@@ -23,7 +23,7 @@ export default function SafeInfo(props) {
 
   useEffect(() => {
     console.log({ balanceData, thresholdData, isLoading, isError });
-  }, [balanceData, thresholdData]);
+  }, [balanceData, isError, isLoading, thresholdData]);
 
   if (!isHydrated) {
     return null;
