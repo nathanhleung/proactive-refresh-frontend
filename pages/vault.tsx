@@ -4,6 +4,7 @@ import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import demo from '@data/sim.json';
 import { abridgeKey } from '@config/demo';
+import { useRouter } from 'next/router';
 
 const NUM_SIGNERS = 9;
 const THRESHOLD = 6;
@@ -11,6 +12,7 @@ const THRESHOLD = 6;
 const MAX_TIME = 15;
 
 const Vault: NextPage = () => {
+  const router = useRouter();
   const [time, setTime] = useState(0);
 
   const [ATSPRstate, setATSPRState] = useState();
@@ -52,6 +54,9 @@ const Vault: NextPage = () => {
 
   return (
     <>
+      <Button variant='ghost' onClick={() => router.push('/')}>
+        Go back
+      </Button>
       <Container textAlign='center' py={10} px={10} maxW='1200px'>
         <Text as='h1'>The Vault</Text>
         <Text>

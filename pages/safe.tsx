@@ -7,17 +7,22 @@ import { Account } from '@components/Account';
 import { useState } from 'react';
 import useIsHydrated from '@hooks/useIsHydrated';
 import { NextPage } from 'next';
-import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi'
-
+import {
+  useContractWrite,
+  usePrepareContractWrite,
+  useWaitForTransaction,
+} from 'wagmi';
+import { useRouter } from 'next/router';
 
 const stringToBytes = (str: string) => {
   const encoder = new TextEncoder();
-  return encoder.encode(str)
-}
+  return encoder.encode(str);
+};
 
 const Safe: NextPage = () => {
+  const router = useRouter();
   //const isHydrated = useIsHydrated()
-  const [txSigs, setTxSigs] =  useState('')
+  const [txSigs, setTxSigs] = useState('');
 
   /*
   address to,uint256 value,bytes data,uint8 operation,uint256 safeTxGas,uint256 baseGas,uint256 gasPrice,address gasToken,address refundReceiver,bytes signatures
@@ -35,44 +40,42 @@ const Safe: NextPage = () => {
           {
             to: '0000000000000000000000008a64e0b0506294ebb1ae2119d9f500dfb867033c',
             signatures: stringToBytes(txSigs),
-
-          }
+          },
         ],
         outputs: [],
       },
     ],
     functionName: 'execTransaction',
-  })
+  });
 
-  const { data, write } = useContractWrite(config)
+  const { data, write } = useContractWrite(config);
 
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,
-  })
+  });
 
   return (
     <>
-      {<Account/>}
-      <Head>
+      <Button variant='ghost' onClick={() => router.push('/')}>
+        Go back
+      </Button>
       <Container textAlign='center' py={10} px={10} maxW='1200px'>
-        <Text>The Safe</Text>
-        Safe with Accountable Threshold Signatures with Proactive Refresh
-        
-        <Divider></Divider>
-
+        <Text as='h1'>The Safe</Text>
+        <Text>
+          Safe with Accountable Threshold Signatures with Proactive Refresh
+        </Text>
+        <Account />
+        <Divider />
         Add Signatures
         <Input
-            placeholder="Add Signatures"
-            value={txSigs}
-            onChange={e => setTxSigs(e.target.value)}
-            size='lg'
-          />
-        <Button
-        disabled={!write}
-        onClick={() => write?.()}>
+          placeholder='Add Signatures'
+          value={txSigs}
+          onChange={(e) => setTxSigs(e.target.value)}
+          size='lg'
+        />
+        <Button disabled={!write} onClick={() => write?.()}>
           Verify Signatures
         </Button>
-
         <div>
           Successfully verified BLS signature!
           <div>
@@ -80,8 +83,7 @@ const Safe: NextPage = () => {
           </div>
         </div>
       </Container>
-      </Head>
     </>
   );
-}
+};
 export default Safe;

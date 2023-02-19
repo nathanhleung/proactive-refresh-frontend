@@ -1,4 +1,4 @@
-export const abridgeKey = (key: string) => {
+export const abridgeKey = (key?: string) => {
   if (!key) {
     return '';
   }
