@@ -1,6 +1,6 @@
 # Proactive Refresh Frontend
 
-Frontend for the [Proactive Refresh Project](https://devpost.com/software/proactive-refresh) submitted to [TreeHacks 2023](https://www.treehacks.com/).
+Frontend for the [Proactive Refresh](https://devpost.com/software/proactive-refresh) project submitted to [TreeHacks 2023](https://www.treehacks.com/).
 
 See https://github.com/lyronctk/proactive-refresh for more details.
 
