@@ -1,6 +1,8 @@
-# ATS-PR-BLS Frontend
+# Proactive Refresh Frontend
 
-Library code [ats-pr-bls](https://github.com/lyronctk/ats-pr-bls)
+Frontend for the [Proactive Refresh Project](https://devpost.com/software/proactive-refresh) submitted to [TreeHacks 2023](https://www.treehacks.com/).
+
+See https://github.com/lyronctk/proactive-refresh for more details.
 
 ## Getting Started
 
